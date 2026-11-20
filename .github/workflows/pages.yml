@@ -6,6 +6,7 @@ on:
       - 'src/**'
       - 'landing.html'
       - 'index.html'
+      - 'newtab.html'
       - 'package.json'
       - 'vite.config.js'
       - '.github/workflows/pages.yml'
@@ -40,6 +41,8 @@ jobs:
           cp -R dist/assets pages/assets
           touch pages/.nojekyll
           test -s pages/index.html
+          test -d pages/assets
+          ! grep -q 'src/main.jsx' pages/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

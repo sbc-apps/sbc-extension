@@ -26,7 +26,7 @@ npm run build
 
 The release workflow builds with Vite and adds `manifest.json` to `dist/`. To test locally, run `npm run build` and copy `manifest.json` to `dist/` (or use the ZIP from Releases).
 
-- New tab: `http://localhost:5173/`
+- New tab: `http://localhost:5173/newtab.html`
 - Landing page: `http://localhost:5173/landing.html`
 - Distribution: `dist/`
 
@@ -80,3 +80,8 @@ The landing preview contains clearly labeled illustrative prices and weather, no
 ## Official SBC brand alignment (v1.3.0)
 
 The landing page and browser new tab use the official guidelines at https://sbc.om/brand/: unchanged SBC logo (https://sbc.om/logo.svg), SBC Blue #0098EA for the mark, Royal #406AE4 to Azure #3B82F6 for interface icon circles, Navy #06132A for dark surfaces, Bricolage Grotesque for headings and Inter for UI text. The full-screen illustrated meadow background is hosted on the SBC website and is used instead of a city stock photo. The official logo and background are loaded from sbc.om; for guaranteed offline rendering, the brand owners may later bundle the official image assets with the extension. No scrolling is introduced in the primary view.
+
+
+## Blank GitHub Pages fix (1.4.1)
+
+GitHub Pages was configured with both its built-in Jekyll branch deployment and a custom Vite deployment. In the legacy branch workflow, the old root `index.html` pointed to raw `/src/main.jsx` and loaded no application. The source tree now has a standalone, dependency-free `index.html` that displays a working glass landing page under legacy Jekyll publishing; the browser extension entry is separately located at `newtab.html`. The custom workflow continues publishing the full React landing. For a single reliable publication path, set **Settings > Pages > Source: GitHub Actions** so the Jekyll workflow stops competing with the custom workflow.

@@ -7,6 +7,7 @@ on:
       - 'manifest.json'
       - 'src/**'
       - 'index.html'
+      - 'newtab.html'
       - 'landing.html'
       - 'vite.config.js'
       - '.github/workflows/release.yml'
@@ -38,6 +39,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Build extension and landing
         run: npm run build
+      - name: Verify extension new-tab output
+        run: test -s dist/newtab.html
       - name: Copy extension manifest
         run: cp manifest.json dist/manifest.json
       - name: Package Chromium and Firefox

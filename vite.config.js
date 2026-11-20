@@ -4,5 +4,5 @@ import { resolve } from 'node:path';
 export default defineConfig({
   plugins: [react()],
   base: './',
-  build: { rollupOptions: { input: { newtab: resolve(import.meta.dirname, 'index.html'), landing: resolve(import.meta.dirname, 'landing.html') } } }
+  build: { rollupOptions: { input: { newtab: resolve(import.meta.dirname, 'newtab.html'), landing: resolve(import.meta.dirname, 'landing.html') } } }
 });
