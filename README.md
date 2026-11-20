@@ -75,3 +75,8 @@ https://sbc-apps.github.io/sbc-extension/
 In **Settings → Pages → Build and deployment**, set **Source: GitHub Actions** once. The workflow automatically publishes the landing page after subsequent pushes to `main`. The deployment intentionally excludes `manifest.json`, so visitors get the public landing site rather than the extension's New Tab entry point.
 
 The landing preview contains clearly labeled illustrative prices and weather, not live financial quotes. The extension itself fetches market and weather data when available.
+
+
+## Official SBC brand alignment (v1.3.0)
+
+The landing page and browser new tab use the official guidelines at https://sbc.om/brand/: unchanged SBC logo (https://sbc.om/logo.svg), SBC Blue #0098EA for the mark, Royal #406AE4 to Azure #3B82F6 for interface icon circles, Navy #06132A for dark surfaces, Bricolage Grotesque for headings and Inter for UI text. The full-screen illustrated meadow background is hosted on the SBC website and is used instead of a city stock photo. The official logo and background are loaded from sbc.om; for guaranteed offline rendering, the brand owners may later bundle the official image assets with the extension. No scrolling is introduced in the primary view.
