@@ -64,3 +64,14 @@ SBC Start requires `storage` permission and host access to CoinGecko and Open-Me
 Designed for current Chromium browsers and Firefox with Manifest V3 New Tab support. Actual behavior must be tested in each browser. Safari requires its own signed conversion pipeline. No blanket compatibility claim is made.
 
 © Senior Blockchain Company LLC.
+
+
+## GitHub Pages
+
+The standalone marketing site is built from `landing.html` and deployed by `.github/workflows/pages.yml` to:
+
+https://sbc-apps.github.io/sbc-extension/
+
+In **Settings → Pages → Build and deployment**, set **Source: GitHub Actions** once. The workflow automatically publishes the landing page after subsequent pushes to `main`. The deployment intentionally excludes `manifest.json`, so visitors get the public landing site rather than the extension's New Tab entry point.
+
+The landing preview contains clearly labeled illustrative prices and weather, not live financial quotes. The extension itself fetches market and weather data when available.
