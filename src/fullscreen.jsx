@@ -6,7 +6,7 @@ import './style.css';
 import './fullscreen.css';
 import './brand.css';
 export const RELEASE='https://github.com/sbc-apps/sbc-extension/releases/latest';
-export const VERSION='1.3.0';
+export const VERSION='1.4.0';
 export const tools=[{key:'converter',label:'Converter',Icon:ArrowLeftRight},{key:'clock',label:'World clock',Icon:Clock3},{key:'timer',label:'Focus timer',Icon:Timer},{key:'prices',label:'Markets',Icon:Coins},{key:'tasks',label:'My tasks',Icon:CheckCheck},{key:'calendar',label:'Calendar',Icon:CalendarDays},{key:'news',label:'Headlines',Icon:Bell},{key:'weather',label:'Weather',Icon:CloudSun}];
 const cities=[['Muscat','Asia/Muscat'],['Dubai','Asia/Dubai'],['London','Europe/London'],['New York','America/New_York'],['Tokyo','Asia/Tokyo'],['Tehran','Asia/Tehran']];
 const formatClock=(date,tz,seconds=false)=>new Intl.DateTimeFormat('en-GB',{timeZone:tz,hour:'2-digit',minute:'2-digit',...(seconds?{second:'2-digit'}:{})}).format(date);

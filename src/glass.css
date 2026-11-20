@@ -1,0 +1,69 @@
+/* SBC Start glass redesign v1.4.0. The primary screen never scrolls. */
+.glass-experience{--glass-ink:#06132a;--glass-blue:#406ae4;--glass-cyan:#0098ea;--glass-rim:rgba(255,255,255,.26);--glass-surface:rgba(14,29,53,.38);background-color:#06132a;overscroll-behavior:none;overflow:hidden;height:100dvh;min-height:0;isolation:isolate;font-family:'Inter',system-ui,sans-serif;color:#fff}
+.glass-experience .full-shade{z-index:-1;background:linear-gradient(115deg,rgba(1,10,27,.62),rgba(6,19,42,.24) 40%,rgba(1,10,27,.52)),linear-gradient(180deg,rgba(5,13,29,.28),rgba(3,12,30,.68))}
+.glass-grain{position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(106,165,235,.17),transparent 52%),radial-gradient(ellipse at 10% 10%,rgba(0,152,234,.1),transparent 40%)}
+.glass-topline{position:absolute;z-index:2;top:0;left:0;right:0;height:70px;display:flex;justify-content:space-between;align-items:center;padding:0 clamp(22px,4vw,65px)}
+.glass-topline-brand{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.22em;font-weight:800;color:rgba(255,255,255,.83)}
+.topline-dot{width:9px;height:9px;border:2px solid #a9d1ff;border-radius:50%;box-shadow:0 0 16px rgba(100,167,255,.5)}
+.glass-topline-link,.glass-settings{display:inline-flex;align-items:center;gap:9px;color:rgba(255,255,255,.87);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.17);border-radius:999px;padding:9px 13px;font-size:12px;text-decoration:none;backdrop-filter:blur(18px)}
+.glass-topline-link:hover,.glass-settings:hover{background:rgba(255,255,255,.17)}
+.glass-settings{cursor:pointer;padding:10px}
+.glass-layout{position:absolute;inset:65px 20px 55px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(20px,4vh,42px);min-height:0}
+.glass-shell{position:relative;isolation:isolate;overflow:hidden;width:min(680px,100%);border:1px solid rgba(255,255,255,.26);border-top-color:rgba(255,255,255,.48);border-radius:35px;padding:clamp(22px,3.7vh,34px) clamp(24px,4vw,50px);display:flex;flex-direction:column;align-items:center;text-align:center;backdrop-filter:blur(38px) saturate(150%);-webkit-backdrop-filter:blur(38px) saturate(150%);background:linear-gradient(148deg,rgba(255,255,255,.19),rgba(114,152,197,.095) 32%,rgba(5,18,38,.3) 94%);box-shadow:0 34px 90px rgba(0,7,21,.26),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.08)}
+.glass-shell::before{content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid rgba(255,255,255,.09);pointer-events:none}
+.glass-shell-light{position:absolute;z-index:-1;top:-140px;left:22%;width:55%;height:210px;border-radius:50%;background:rgba(190,220,255,.21);filter:blur(65px);pointer-events:none}
+.glass-product-mark .full-brand{display:flex;flex-direction:row;gap:11px;font-size:23px;letter-spacing:-.05em;line-height:1;align-items:center;text-shadow:none}
+.glass-product-mark .full-brand strong{font-weight:500}
+.glass-product-mark .official-sbc-logo{width:35px;height:35px;object-fit:contain}
+.glass-product-mark{display:flex;align-items:center;justify-content:center}
+.glass-rule{width:32px;height:1px;background:rgba(255,255,255,.48);margin:clamp(17px,3vh,25px) auto}
+.glass-eyebrow{display:flex;align-items:center;justify-content:center;gap:8px;font-size:10px;letter-spacing:.18em;color:#d1e4f5;font-weight:800}
+.glass-live-dot{height:6px;width:6px;background:#83c1ff;border-radius:50%;box-shadow:0 0 10px #83c1ff}
+.glass-product-intro h1{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(34px,4vw,51px);line-height:1.08;font-weight:600;letter-spacing:-.052em;margin:14px 0 12px}
+.glass-product-intro h1 em{font-style:normal;color:#d1e7ff}
+.glass-product-intro p{margin:0;color:rgba(245,250,255,.78);font-size:13px;letter-spacing:.01em}
+.glass-actions{display:flex;justify-content:center;gap:11px;margin:clamp(20px,3.1vh,31px) 0;width:100%}
+.glass-primary,.glass-secondary{min-height:47px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 19px;font-size:13px;border-radius:13px;font-weight:750;text-decoration:none;transition:background .2s,transform .2s,border-color .2s}
+.glass-primary{background:#406ae4;color:#fff;border:1px solid #6e93ff;box-shadow:0 7px 23px #1a47b942}
+.glass-primary:hover{background:#527df4;transform:translateY(-2px)}
+.glass-secondary{color:white;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1)}
+.glass-secondary:hover{background:rgba(255,255,255,.2)}
+.glass-browser-heading{display:flex;justify-content:space-between;width:min(450px,100%);font-size:9px;letter-spacing:.15em;color:#d1deed;font-weight:700;margin-bottom:9px}
+.glass-browser-row{display:flex;gap:9px;width:min(450px,100%);justify-content:center}
+.glass-browser{display:flex;flex:1;min-width:0;align-items:center;justify-content:center;gap:8px;min-height:53px;color:white;text-decoration:none;border:1px solid rgba(255,255,255,.19);background:rgba(255,255,255,.095);border-radius:13px;transition:background .2s,transform .2s}
+.glass-browser:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+.glass-browser b{font-size:11px;font-weight:650}
+.glass-browser .browser-symbol{display:grid;place-items:center;width:23px;height:23px;font-size:22px}
+.glass-browser .browser-symbol.chrome{font-size:20px}
+.glass-browser .browser-symbol.edge{font-size:24px;text-shadow:-4px -3px 0 #25a8ee}
+.glass-browser .browser-symbol.brave{font-size:25px}
+.glass-browser .browser-symbol.firefox{font-size:23px;text-shadow:5px -2px 0 #f73b62,-2px 4px 0 #813ee9}
+.glass-shell-caption{margin-top:15px;display:flex;align-items:center;justify-content:center;gap:7px;color:#d7e4ef;font-size:10px}
+.glass-dock-wrap{display:flex;flex-direction:column;gap:11px;align-items:center;width:min(895px,100%)}
+.glass-dock-title{display:flex;align-items:center;gap:13px;letter-spacing:.24em;font-size:9px;font-weight:800;color:rgba(250,254,255,.82)}
+.glass-dock-title span{display:block;height:1px;width:28px;background:rgba(255,255,255,.36)}
+.glass-experience .full-features{width:100%;max-width:895px;display:flex;gap:0;padding:10px 12px;align-items:center;border-radius:24px;border:1px solid rgba(255,255,255,.24);border-top-color:rgba(255,255,255,.36);background:linear-gradient(135deg,rgba(255,255,255,.21),rgba(8,22,47,.29));backdrop-filter:blur(32px) saturate(140%);-webkit-backdrop-filter:blur(32px) saturate(140%);box-shadow:0 25px 65px rgba(0,9,25,.24),inset 0 1px 0 rgba(255,255,255,.18)}
+.glass-experience .full-feature{border:0;background:transparent;box-shadow:none;border-radius:15px;min-width:0;max-width:none;flex:1;height:69px;gap:8px;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:background .18s}
+.glass-experience .full-feature svg{width:23px;height:23px;padding:0;flex:none;border-radius:0;background:none;box-shadow:none;color:#f4faff;stroke-width:1.65}
+.glass-experience .full-feature span{font-size:10px;font-weight:600;white-space:nowrap;color:#eaf3fc}
+.glass-experience .full-feature:hover,.glass-experience .full-feature:focus-visible{transform:none;background:rgba(255,255,255,.15)}
+.glass-experience .full-feature:focus-visible,.glass-browser:focus-visible,.glass-primary:focus-visible,.glass-secondary:focus-visible{outline:2px solid #a7d8ff;outline-offset:2px}
+.glass-footer{position:absolute;left:clamp(20px,4vw,65px);right:clamp(20px,4vw,65px);bottom:21px;display:flex;align-items:center;justify-content:space-between;font-size:10px;color:rgba(242,248,255,.72);font-weight:500}
+.glass-footer>div{display:flex;gap:24px}.glass-footer a{display:inline-flex;align-items:center;gap:4px;color:inherit;text-decoration:none}.glass-footer a:hover{color:white}
+.glass-tab-shell{width:min(710px,100%);padding:clamp(27px,4.5vh,45px) 35px}
+.glass-tab-date{display:flex;align-items:center;gap:8px;color:#d3e2ee;margin:clamp(17px,3vh,27px) 0 0;font-size:12px}
+.glass-time{font-size:clamp(74px,12vw,116px);font-weight:300;letter-spacing:-.085em;line-height:1.1;font-variant-numeric:tabular-nums;margin:4px 0;color:white;text-shadow:0 8px 22px rgba(0,0,0,.08)}
+.glass-greeting{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(18px,2vw,23px);font-weight:500;margin:0 0 clamp(18px,3vh,28px);color:#f1f7ff}.glass-greeting span{color:#afccff}
+.glass-search{width:min(520px,100%);min-height:55px;display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.33);border-radius:15px;padding:7px 9px 7px 18px;backdrop-filter:blur(12px)}
+.glass-search>svg{flex:none;color:#d8e8ff}.glass-search input{background:transparent;border:0;outline:0;min-width:0;flex:1;color:#fff;font-size:13px}.glass-search input::placeholder{color:#dde6f1}.glass-search button{border:0;background:#406ae4;color:white;display:grid;place-items:center;height:39px;width:39px;flex:none;border-radius:10px}.glass-search button:hover{background:#527df4}.glass-search:focus-within{outline:2px solid #b0d8ff;outline-offset:2px}
+.glass-tab-hint{font-size:10px;letter-spacing:.06em;color:#c8d9e7;margin-top:14px}
+.glass-experience .full-overlay{z-index:100;background:rgba(1,8,23,.63);backdrop-filter:blur(13px)}
+.glass-experience .full-dialog{background:linear-gradient(145deg,rgba(31,56,87,.96),rgba(7,21,45,.97));border:1px solid rgba(255,255,255,.31);border-radius:23px;backdrop-filter:blur(36px);box-shadow:0 25px 90px #0007}
+.glass-experience .full-dialog>header{background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.15);padding:18px 23px}
+.glass-experience .dialog-body{padding:21px 25px 27px}
+.glass-experience .full-dialog button:focus-visible{outline:2px solid #b4d9ff;outline-offset:2px}
+@media(max-height:780px){.glass-layout{gap:14px;inset:58px 20px 43px}.glass-shell{padding:19px 27px;border-radius:26px}.glass-rule{margin:12px auto}.glass-product-intro h1{font-size:37px;margin:9px 0}.glass-actions{margin:14px 0}.glass-browser{min-height:42px}.glass-shell-caption{margin-top:9px}.glass-experience .full-feature{height:55px;gap:5px}.glass-experience .full-feature svg{width:20px;height:20px}.glass-experience .full-features{padding:6px 10px}.glass-product-mark .official-sbc-logo{width:29px;height:29px}.glass-tab-date{margin-top:14px}.glass-time{font-size:76px}.glass-greeting{margin-bottom:13px}.glass-tab-shell{padding:23px 28px}.glass-dock-title{font-size:8px}.glass-footer{bottom:12px}}
+@media(max-height:610px){.glass-layout{gap:9px}.glass-landing-shell{padding:12px 22px}.glass-product-intro h1{font-size:29px}.glass-product-intro p,.glass-shell-caption{display:none}.glass-rule{margin:7px auto}.glass-actions{margin:10px 0}.glass-primary,.glass-secondary{min-height:37px;padding:8px 13px}.glass-browser{min-height:35px}.glass-experience .full-feature{height:43px}.glass-experience .full-feature span{font-size:9px}.glass-experience .full-feature svg{width:17px;height:17px}.glass-tab-shell{padding:13px 24px}.glass-time{font-size:55px}.glass-greeting{margin-bottom:9px}.glass-tab-date{margin-top:7px}.glass-tab-hint{display:none}.glass-search{min-height:40px}.glass-search button{height:29px;width:29px}}
+@media(max-width:650px){.glass-topline{height:55px;padding:0 16px}.glass-layout{inset:54px 12px 40px;gap:13px}.glass-shell{border-radius:25px;padding:19px 16px;width:min(450px,100%)}.glass-product-mark .full-brand{font-size:19px;gap:9px}.glass-product-intro h1{font-size:clamp(28px,7vw,39px)}.glass-product-intro p{font-size:11px}.glass-primary,.glass-secondary{padding:9px 13px;font-size:11px;gap:7px}.glass-browser{gap:5px;flex-direction:column;padding:5px 0}.glass-browser b{font-size:9px}.glass-browser-heading{font-size:8px}.glass-shell-caption{font-size:9px}.glass-experience .full-features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:9px;gap:3px;border-radius:21px}.glass-experience .full-feature{height:54px;gap:5px}.glass-experience .full-feature svg{width:19px;height:19px}.glass-experience .full-feature span{font-size:9px}.glass-footer{left:16px;right:16px;font-size:9px;bottom:12px}.glass-footer>div{gap:12px}.glass-tab-shell{padding:20px 16px}.glass-time{font-size:clamp(64px,15vw,90px)}}
+@media(max-width:380px){.glass-shell{padding:14px 12px}.glass-product-intro h1{font-size:27px}.glass-actions{gap:6px}.glass-primary,.glass-secondary{font-size:10px;padding:8px 10px}.glass-dock-title{font-size:8px}.glass-experience .full-feature span{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.glass-experience *{animation:none!important;transition:none!important}}
