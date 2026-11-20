@@ -33,7 +33,7 @@ jobs:
           test "$VERSION" = "$MANIFEST_VERSION" || { echo 'package.json and manifest.json versions must match'; exit 1; }
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           PREVIOUS=$(git show HEAD^:package.json 2>/dev/null | node -e "let s='';process.stdin.on('data',v=>s+=v).on('end',()=>{try{process.stdout.write(JSON.parse(s).version)}catch{}})" || true)
-          if [ "$VERSION" != "$PREVIOUS" ]; then echo 'changed=true' >> "$GITHUB_OUTPUT"; else echo 'changed=false' >> "$GITHUB_OUTPUT"; fi
+          if [ "$VERSION" != "$PREVIOUS" ] || ! git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null 2>&1; then echo 'changed=true' >> "$GITHUB_OUTPUT"; else echo 'changed=false' >> "$GITHUB_OUTPUT"; fi
       - name: Install dependencies
         run: npm install --no-audit --no-fund
       - name: Build extension and landing
