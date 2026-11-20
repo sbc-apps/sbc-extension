@@ -1,18 +1,19 @@
 # SBC Start
 
-A customizable **New Tab** dashboard and landing page for modern browsers, built for Senior Blockchain Company LLC. Inspired by the *feature categories* of the ArzDigital browser extension, with an original SBC visual design.
+A browser **New Tab** extension and its landing page, built for Senior Block Chain LLC (SBC). Persian (right-to-left) is the default language; English is one click away in Settings.
 
-## Features
+## The new tab
 
-- Full-page New Tab replacement with web search and live clock
-- Live public crypto market watch via CoinGecko, with clear error states and no fabricated prices
-- Weather via Open-Meteo (predefined cities, no automatic geolocation)
-- Tasks and customizable shortcuts stored locally
-- Focus timer, monthly calendar, four world clocks
-- Widget visibility, search engine, weather unit and light/dark theme settings
-- Original responsive marketing landing page
-- Animate UI provider from `@animate-ui/react` and Motion transitions
-- Automatic GitHub Release on **version change**, not on every code commit
+- Big clock with two switchable cities, the date in the Solar Hijri (Jalali) calendar, and a web search bar (Google, DuckDuckGo or Bing) with a shortcuts button.
+- **Top bar:** tools launcher · SBC news · weather — focus timer — live crypto ticker · price alerts · converter.
+- **Bottom bar:** my tasks · notes — wallpaper back / slideshow / next — your public IP and connection status · settings.
+- Every item opens a frosted-glass popover: 5-day weather with city search, SBC news (one line per headline), a calendar showing Jalali, Gregorian and Hijri dates, 8-coin market list (click a coin to pin it to the ticker), price alerts, crypto/fiat converter, Pomodoro focus timer (other widgets fade while it runs), prioritised tasks, notes, world clock, shortcuts and settings.
+- Five bundled wallpapers that work offline: four original "silk ribbon" artworks (`npm run wallpapers` regenerates them) and the official SBC meadow illustration.
+- Settings are saved in `localStorage` and stay in sync across open tabs.
+
+## The landing page
+
+`index.html` + `site/` is a static page (no build step), modelled on the layout of extension.arzdigital.com: logo, title, rotating tagline, browser download buttons, a version/tools/price strip, eight feature tiles and a footer. Each feature tile opens a sheet with a real screenshot of the extension (`site/previews/{fa,en}/*.jpg`). Each browser button opens step-by-step install instructions and a download link to the latest release ZIP.
 
 ## Development
 
@@ -20,68 +21,59 @@ Requirements: Node.js 22+.
 
 ```bash
 npm install
-npm run dev
-npm run build
+npm run dev          # http://localhost:5173/ (landing) and /newtab.html (extension)
+npm run build        # bundles the new tab into dist/
+npm run wallpapers   # regenerates src/assets/wallpapers/*.svg
 ```
 
-The release workflow builds with Vite and adds `manifest.json` to `dist/`. To test locally, run `npm run build` and copy `manifest.json` to `dist/` (or use the ZIP from Releases).
+To try the extension locally, run `npm run build`, copy `manifest.json` into `dist/`, then load `dist/` as an unpacked extension.
 
-- New tab: `http://localhost:5173/newtab.html`
-- Landing page: `http://localhost:5173/landing.html`
-- Distribution: `dist/`
+## Project layout
 
-## Install unpacked
+- `src/main.jsx` — new tab shell: bars, clock, search, popovers, focus/alert/slideshow logic
+- `src/panels.jsx` — every widget panel (weather, news, markets, alerts, converter, focus, tasks, notes, calendar, world clock, shortcuts, IP, settings)
+- `src/api.js` — public data sources with a shared localStorage cache
+- `src/store.js` — settings schema, migration from v1, cross-tab sync
+- `src/i18n.js`, `src/dates.js` — Persian/English strings and Intl-based calendar helpers
+- `src/wallpapers.js`, `src/assets/` — wallpapers and the SBC logo
+- `src/brand-icons.js` — browser and search engine glyphs (Simple Icons, CC0), also used by the landing page
+- `public/icons/` — extension icons
+- `index.html`, `site/` — static landing page
+- `.github/workflows/release.yml`, `.github/workflows/pages.yml` — release and Pages deployment
 
-**Chrome, Edge, Brave, Opera (Chromium):** Open the browser's extension management page, enable developer mode, choose **Load unpacked**, and select `dist/` after copying the manifest. Confirm the New Tab replacement prompt when shown.
+## Install
 
-**Firefox:** Use `about:debugging#/runtime/this-firefox` > Load Temporary Add-on > choose `dist/manifest.json`. Permanent installation normally requires Mozilla signing. Browser-specific review, packaging and signing may be needed for official distribution. Safari needs a separate Safari Web Extension conversion and signing through Apple's tooling and is **not** built by this repository.
+The extension is not in the browser stores yet. The landing page walks visitors through it:
+
+- **Chrome, Edge, Brave, Opera, Vivaldi:** download `sbc-start-chromium.zip`, extract it, open the browser's extensions page, enable Developer mode, choose **Load unpacked** and select the folder.
+- **Firefox:** download `sbc-start-firefox.zip`, extract it, open `about:debugging#/runtime/this-firefox`, choose **Load Temporary Add-on** and pick `manifest.json`. A permanent install needs a Mozilla-signed build.
 
 ## Release process
 
-1. Update the version in **both** `package.json` and `manifest.json` to the same new semantic version (for example `1.0.1`).
+1. Set the same version in `package.json`, `manifest.json` and `site/landing.js` (`VERSION`). CI fails if they differ.
 2. Commit and push to `main`.
-3. GitHub Actions checks version consistency, builds, and creates release `v1.0.1` with downloadable ZIP packages.
-4. Commits without a version change build an artifact but **do not** create a new GitHub Release.
-5. Review the browser's installation and store rules before distributing. A GitHub Release does not automatically update installed browser extensions; browser stores require separate publication processes.
-
-The Firefox and Chromium archives currently share the same Manifest V3 application code. Packaging separately makes browser-specific changes possible later.
-
-## Privacy and permissions
-
-SBC Start requires `storage` permission and host access to CoinGecko and Open-Meteo for data requests. All tasks, shortcuts, widget visibility, preferred city and appearance are stored in localStorage for this extension origin. There is no account or server sync. The dashboard does **not** access wallets, private keys or website content. Market quotes are for information only; availability and rate limits depend on the public provider. Avoid putting confidential information in task titles.
-
-## Architecture
-
-- `src/main.jsx`: New Tab UI and widgets
-- `src/landing.jsx`: product landing
-- `src/store.js`: settings persistence
-- `src/style.css`: responsive design system
-- `manifest.json`: browser extension metadata
-- `.github/workflows/release.yml`: build and release
-
-## Browser coverage
-
-Designed for current Chromium browsers and Firefox with Manifest V3 New Tab support. Actual behavior must be tested in each browser. Safari requires its own signed conversion pipeline. No blanket compatibility claim is made.
-
-© Senior Blockchain Company LLC.
-
+3. GitHub Actions builds the extension and creates release `vX.Y.Z` with versioned ZIPs plus stable `sbc-start-chromium.zip` / `sbc-start-firefox.zip`, which the landing page links to through `releases/latest/download/`.
+4. Pushes without a version change upload a build artifact but do not create a release.
 
 ## GitHub Pages
 
-The standalone marketing site is built from `landing.html` and deployed by `.github/workflows/pages.yml` to:
+The landing page is served as-is from the repository, so it looks the same whether Pages uses branch publishing or the `pages.yml` workflow (which copies `index.html`, `site/` and the few assets it uses). `.nojekyll` keeps branch publishing from processing files.
 
 https://sbc-apps.github.io/sbc-extension/
 
-In **Settings → Pages → Build and deployment**, set **Source: GitHub Actions** once. The workflow automatically publishes the landing page after subsequent pushes to `main`. The deployment intentionally excludes `manifest.json`, so visitors get the public landing site rather than the extension's New Tab entry point.
+## Privacy and permissions
 
-The landing preview contains clearly labeled illustrative prices and weather, not live financial quotes. The extension itself fetches market and weather data when available.
+The extension asks only for `storage`. Tasks, notes, shortcuts and settings never leave the browser; there is no account and no SBC server. For live data it calls these public services directly:
 
+| Data | Service |
+| --- | --- |
+| Crypto prices, alerts, converter | CoinGecko |
+| Weather and city search | Open-Meteo |
+| Currency rates | ExchangeRate-API (open.er-api.com) |
+| Public IP and country | country.is |
+| News | sbc.om news RSS feed |
+| Shortcut icons | Google favicon service |
 
-## Official SBC brand alignment (v1.3.0)
+Price alerts are checked while an SBC Start tab is open. Market data is informational only. The extension cannot read website content, browsing history, wallets or private keys.
 
-The landing page and browser new tab use the official guidelines at https://sbc.om/brand/: unchanged SBC logo (https://sbc.om/logo.svg), SBC Blue #0098EA for the mark, Royal #406AE4 to Azure #3B82F6 for interface icon circles, Navy #06132A for dark surfaces, Bricolage Grotesque for headings and Inter for UI text. The full-screen illustrated meadow background is hosted on the SBC website and is used instead of a city stock photo. The official logo and background are loaded from sbc.om; for guaranteed offline rendering, the brand owners may later bundle the official image assets with the extension. No scrolling is introduced in the primary view.
-
-
-## Blank GitHub Pages fix (1.4.1)
-
-GitHub Pages was configured with both its built-in Jekyll branch deployment and a custom Vite deployment. In the legacy branch workflow, the old root `index.html` pointed to raw `/src/main.jsx` and loaded no application. The source tree now has a standalone, dependency-free `index.html` that displays a working glass landing page under legacy Jekyll publishing; the browser extension entry is separately located at `newtab.html`. The custom workflow continues publishing the full React landing. For a single reliable publication path, set **Settings > Pages > Source: GitHub Actions** so the Jekyll workflow stops competing with the custom workflow.
+© Senior Block Chain LLC.

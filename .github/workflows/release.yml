@@ -6,9 +6,8 @@ on:
       - 'package.json'
       - 'manifest.json'
       - 'src/**'
-      - 'index.html'
+      - 'site/landing.js'
       - 'newtab.html'
-      - 'landing.html'
       - 'vite.config.js'
       - '.github/workflows/release.yml'
   workflow_dispatch:
@@ -32,12 +31,14 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           MANIFEST_VERSION=$(node -p "require('./manifest.json').version")
           test "$VERSION" = "$MANIFEST_VERSION" || { echo 'package.json and manifest.json versions must match'; exit 1; }
+          LANDING_VERSION=$(sed -n "s/^export const VERSION = '\([^']*\)'.*/\1/p" site/landing.js)
+          test "$VERSION" = "$LANDING_VERSION" || { echo "site/landing.js VERSION ($LANDING_VERSION) must match package.json ($VERSION)"; exit 1; }
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           PREVIOUS=$(git show HEAD^:package.json 2>/dev/null | node -e "let s='';process.stdin.on('data',v=>s+=v).on('end',()=>{try{process.stdout.write(JSON.parse(s).version)}catch{}})" || true)
           if [ "$VERSION" != "$PREVIOUS" ] || ! git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null 2>&1; then echo 'changed=true' >> "$GITHUB_OUTPUT"; else echo 'changed=false' >> "$GITHUB_OUTPUT"; fi
       - name: Install dependencies
         run: npm install --no-audit --no-fund
-      - name: Build extension and landing
+      - name: Build extension
         run: npm run build
       - name: Verify extension new-tab output
         run: test -s dist/newtab.html
@@ -46,8 +47,12 @@ jobs:
       - name: Package Chromium and Firefox
         run: |
           cd dist
-          zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-chromium.zip" . -x "landing.html"
-          zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-firefox.zip" . -x "landing.html"
+          zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-chromium.zip" .
+          zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-firefox.zip" .
+          cd ..
+          # Stable names so the landing page can link to releases/latest/download/<name>.
+          cp "sbc-start-v${{ steps.version.outputs.version }}-chromium.zip" sbc-start-chromium.zip
+          cp "sbc-start-v${{ steps.version.outputs.version }}-firefox.zip" sbc-start-firefox.zip
       - name: Publish GitHub Release (only when version changes)
         if: steps.version.outputs.changed == 'true'
         env:
@@ -57,7 +62,7 @@ jobs:
           if gh release view "v$VERSION" >/dev/null 2>&1; then
             echo "Release v$VERSION already exists"; exit 0
           fi
-          gh release create "v$VERSION" "sbc-start-v$VERSION-chromium.zip" "sbc-start-v$VERSION-firefox.zip" --title "SBC Start v$VERSION" --generate-notes --latest
+          gh release create "v$VERSION" "sbc-start-v$VERSION-chromium.zip" "sbc-start-v$VERSION-firefox.zip" sbc-start-chromium.zip sbc-start-firefox.zip --title "SBC Start v$VERSION" --generate-notes --latest
       - name: Upload build artifact for non-version changes
         if: steps.version.outputs.changed != 'true'
         uses: actions/upload-artifact@v4

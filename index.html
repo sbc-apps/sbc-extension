@@ -1,57 +1,141 @@
 <!doctype html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#06132a">
-<meta name="description" content="SBC Start — a customizable new tab with focus tools, weather, market watch and shortcuts.">
-<title>SBC Start — A better new tab</title>
-<style>
-:root{color-scheme:dark;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#fff;background:#06132a}
-*{box-sizing:border-box}body{margin:0}a{color:inherit;text-decoration:none}
-.page{position:relative;isolation:isolate;height:100vh;height:100dvh;min-height:0;overflow:hidden;display:grid;place-items:center;background:#06132a url("https://sbc.om/images/76918074cd037e3f41922f08ea54daf2_bg-image-08-p-800.jpg") center/cover}
-.page:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(130deg,rgba(1,9,24,.74),rgba(6,19,42,.45) 50%,rgba(1,9,24,.76))}
-.top{position:absolute;top:26px;left:clamp(20px,5vw,65px);right:clamp(20px,5vw,65px);display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.18em;font-weight:800;color:#dbe8ff}
-.top a{border:1px solid #ffffff4a;padding:10px 14px;border-radius:999px;letter-spacing:0;font-size:12px;background:#ffffff16}
-.center{width:min(700px,calc(100% - 26px));display:flex;flex-direction:column;align-items:center;gap:25px}
-.shell{position:relative;width:100%;padding:clamp(24px,4vh,42px);text-align:center;border-radius:34px;border:1px solid rgba(255,255,255,.34);border-top-color:#ffffff8a;box-shadow:0 30px 95px #0006,inset 0 1px #ffffff42;background:linear-gradient(145deg,#ffffff38,#1125458f);-webkit-backdrop-filter:blur(34px) saturate(150%);backdrop-filter:blur(34px) saturate(150%)}
-.identity{display:flex;align-items:center;justify-content:center;gap:12px;font-size:24px;font-weight:800;letter-spacing:-.05em}
-.identity img{width:42px;height:42px;object-fit:contain}.identity span{font-weight:500}
-h1{font-size:clamp(37px,6.1vw,60px);line-height:1.09;letter-spacing:-.055em;margin:26px 0 10px;font-weight:650}h1 em{font-style:normal;color:#c5e0ff}
-.sub{font-size:13px;color:#e1ecf7;margin:0}
-.actions{display:flex;justify-content:center;gap:11px;margin:31px 0 22px}
-.button{display:inline-flex;align-items:center;justify-content:center;border-radius:13px;font-size:13px;font-weight:700;padding:14px 20px;border:1px solid #ffffff52;background:#ffffff1c}
-.button.primary{background:#406ae4;border-color:#81a4ff}
-.button:hover,.browser:hover{background:#ffffff38}
-.button.primary:hover{background:#507cf2}
-.divider{height:1px;background:#ffffff2c;max-width:440px;margin:0 auto 18px}
-.browser-list{display:flex;gap:8px;max-width:450px;margin:auto}
-.browser{flex:1;text-align:center;padding:12px 6px;border:1px solid #ffffff36;border-radius:13px;background:#ffffff15;font-size:12px;font-weight:700}
-.note{margin:17px 0 0;color:#d0deed;font-size:11px}
-.dock{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));width:min(890px,100%);gap:2px;padding:10px;border:1px solid #ffffff5c;border-radius:23px;background:linear-gradient(140deg,#ffffff3b,#14284a80);-webkit-backdrop-filter:blur(28px);backdrop-filter:blur(28px)}
-.tile{text-align:center;padding:12px 2px;font-size:11px;color:#edf4ff;border-radius:13px}.tile .symbol{display:block;font-size:22px;margin-bottom:8px;font-weight:300}
-.footer{position:absolute;bottom:19px;left:5vw;right:5vw;display:flex;justify-content:space-between;gap:12px;color:#dce8f2;font-size:10px}
-@media(max-width:700px){.center{gap:12px}.shell{padding:23px 18px;border-radius:24px}h1{margin:17px 0 9px}.actions{margin:20px 0 17px}.dock{grid-template-columns:repeat(4,1fr)}.tile{padding:6px 2px}.tile .symbol{margin-bottom:3px;font-size:19px}.footer{font-size:9px}}
-@media(max-height:680px){.center{gap:8px}.shell{padding:15px}h1{font-size:29px;margin:10px 0}.actions{margin:12px 0}.browser{padding:7px}.dock{padding:4px}.tile{padding:4px}.tile .symbol{font-size:16px;margin-bottom:2px}.note{margin:9px 0 0}}
-@media(max-height:450px){.top,.footer,.note{display:none}.center{gap:6px}.identity{font-size:17px}.identity img{height:23px;width:23px}.sub{display:none}.shell{padding:10px}.actions{margin:7px 0}.button{padding:6px 11px}.browser{padding:4px}.tile .symbol{display:none}}
-</style>
+<title>افزونه SBC Start — همه‌چیز در یک تب جدید</title>
+<meta name="description" content="افزونه رایگان SBC Start: قیمت لحظه‌ای ارزها، اخبار روز، آب و هوا، تقویم شمسی، کارهای من و تایمر تمرکز در هر تب جدید مرورگر.">
+<meta name="theme-color" content="#0c0619">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="افزونه SBC Start">
+<meta property="og:description" content="قیمت ارزها، اخبار روز و کارهایت را در هر تب جدید دنبال کن.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="src/assets/sbc-logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="site/landing.css">
 </head>
 <body>
-<div class="page">
-<header class="top"><span>● SBC START</span><a href="https://github.com/sbc-apps/sbc-extension">GitHub ↗</a></header>
-<main class="center">
-<section class="shell" aria-label="SBC Start">
-<div class="identity"><img src="https://sbc.om/logo.svg" alt="SBC logo"><div>SBC <span>Start</span></div></div>
-<h1>Simply a better<br><em>place to begin.</em></h1>
-<p class="sub">Everything that matters, beautifully in reach.</p>
-<div class="actions"><a class="button primary" href="https://github.com/sbc-apps/sbc-extension/releases/latest">↓ Download SBC Start</a><a class="button" href="https://github.com/sbc-apps/sbc-extension">Source code ↗</a></div>
-<div class="divider"></div>
-<div class="browser-list"><a class="browser" href="https://github.com/sbc-apps/sbc-extension/releases/latest">Chrome</a><a class="browser" href="https://github.com/sbc-apps/sbc-extension/releases/latest">Edge</a><a class="browser" href="https://github.com/sbc-apps/sbc-extension/releases/latest">Brave</a><a class="browser" href="https://github.com/sbc-apps/sbc-extension/releases/latest">Firefox</a></div>
-<p class="note">Your tasks and preferences stay on your device.</p>
-</section>
-<div class="dock" aria-label="Extension features"><span class="tile"><span class="symbol">⇄</span>Converter</span><span class="tile"><span class="symbol">◷</span>World clock</span><span class="tile"><span class="symbol">◴</span>Focus timer</span><span class="tile"><span class="symbol">◈</span>Markets</span><span class="tile"><span class="symbol">☑</span>Tasks</span><span class="tile"><span class="symbol">▦</span>Calendar</span><span class="tile"><span class="symbol">♧</span>Headlines</span><span class="tile"><span class="symbol">☁</span>Weather</span></div>
+<div class="bg" aria-hidden="true"></div>
+
+<button class="lang-toggle" type="button" id="lang-toggle" lang="en">English</button>
+
+<main class="hero">
+  <div class="brand">
+    <img class="logo" src="src/assets/sbc-logo.svg" alt="SBC" width="96" height="96">
+    <h1 data-i18n="title">افزونه SBC Start</h1>
+  </div>
+
+  <p class="statement">
+    <span class="words" id="words" aria-hidden="true"></span>
+    <span class="sr-only" id="words-sr" data-i18n="wordsSr">قیمت ارزها، اخبار روز و کارهای خود</span>
+    <span data-i18n="statementTail">را در افزونه SBC دنبال کن</span>
+  </p>
+
+  <div class="downloads" role="group" data-i18n-aria="downloadGroup" aria-label="دانلود برای مرورگر">
+    <div class="dl-menu">
+      <button class="dl-box" type="button" data-browser="chrome"><span class="glyph" data-glyph="chrome"></span><span class="sr-only">Chrome</span></button>
+      <button class="dl-more" type="button" id="dl-more" aria-expanded="false" aria-controls="dl-dropdown" data-i18n-aria="otherBrowsers" aria-label="مرورگرهای دیگر">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="dl-dropdown" id="dl-dropdown" hidden>
+        <button type="button" data-browser="opera"><span class="glyph" data-glyph="opera"></span>Opera</button>
+        <button type="button" data-browser="vivaldi"><span class="glyph" data-glyph="vivaldi"></span>Vivaldi</button>
+        <button type="button" data-browser="chromium"><span class="glyph" data-glyph="chrome"></span><span data-i18n="otherChromium">سایر مرورگرهای کرومیوم</span></button>
+      </div>
+    </div>
+    <button class="dl-box" type="button" data-browser="brave"><span class="glyph" data-glyph="brave"></span><span class="sr-only">Brave</span></button>
+    <button class="dl-box" type="button" data-browser="edge"><span class="glyph" data-glyph="edge"></span><span class="sr-only">Edge</span></button>
+    <button class="dl-box" type="button" data-browser="firefox"><span class="glyph" data-glyph="firefox"></span><span class="sr-only">Firefox</span></button>
+  </div>
+
+  <div class="info">
+    <div class="info-box"><b class="ltr" id="version">1.5.0</b><span data-i18n="version">نسخه</span></div>
+    <div class="info-box"><b data-i18n="toolsCount">+۱۲</b><span data-i18n="tools">ابزار کاربردی</span></div>
+    <div class="info-box"><b data-i18n="free">رایگان</b><span data-i18n="noSignup">بدون ثبت‌نام</span></div>
+  </div>
+
+  <div class="features">
+    <button class="feature" type="button" data-feature="weather">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+      <span data-i18n="f.weather">آب و هوا</span>
+    </button>
+    <button class="feature" type="button" data-feature="news">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+      <span data-i18n="f.news">اخبار روز</span>
+    </button>
+    <button class="feature" type="button" data-feature="calendar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
+      <span data-i18n="f.calendar">تقویم</span>
+    </button>
+    <button class="feature" type="button" data-feature="tasks">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8M13 12h8M13 18h8"/></svg>
+      <span data-i18n="f.tasks">کارهای من</span>
+    </button>
+    <button class="feature" type="button" data-feature="prices">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+      <span data-i18n="f.prices">لیست قیمت</span>
+    </button>
+    <button class="feature" type="button" data-feature="timer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 22h14M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>
+      <span data-i18n="f.timer">تایمر</span>
+    </button>
+    <button class="feature" type="button" data-feature="clock">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span data-i18n="f.clock">ساعت</span>
+    </button>
+    <button class="feature" type="button" data-feature="converter">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>
+      <span data-i18n="f.converter">مبدل قیمت</span>
+    </button>
+  </div>
 </main>
-<footer class="footer"><span>© 2026 Senior Block Chain LLC</span><span>Version 1.4.1 · SBC Start</span></footer>
-</div>
+
+<footer class="foot">
+  <span class="foot-brand" data-i18n="company">SBC · Senior Block Chain</span>
+  <nav class="foot-links">
+    <a href="https://sbc.om/about/" target="_blank" rel="noopener noreferrer" data-i18n="about">درباره ما</a>
+    <a href="https://sbc.om/contact/" target="_blank" rel="noopener noreferrer" data-i18n="contact">تماس با ما</a>
+    <button type="button" id="privacy-link" data-i18n="privacy">حریم خصوصی</button>
+    <a href="https://github.com/sbc-apps/sbc-extension" target="_blank" rel="noopener noreferrer" data-i18n="github">گیت‌هاب</a>
+  </nav>
+</footer>
+
+<dialog class="modal" id="feature-modal" aria-labelledby="feature-title">
+  <button class="modal-close" type="button" data-close data-i18n-aria="close" aria-label="بستن"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  <div class="modal-text">
+    <h2 id="feature-title"></h2>
+    <p id="feature-desc"></p>
+  </div>
+  <div class="modal-preview"><img id="feature-img" alt="" width="600" height="340"></div>
+</dialog>
+
+<dialog class="modal" id="install-modal" aria-labelledby="install-title">
+  <button class="modal-close" type="button" data-close data-i18n-aria="close" aria-label="بستن"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  <div class="modal-text">
+    <span class="install-glyph glyph" id="install-glyph"></span>
+    <h2 id="install-title"></h2>
+    <p id="install-lead"></p>
+  </div>
+  <ol class="steps" id="install-steps"></ol>
+  <div class="modal-actions">
+    <a class="btn-primary" id="install-download" href="https://github.com/sbc-apps/sbc-extension/releases/latest">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 15V3m0 12-4-4m4 4 4-4M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="downloadZip">دانلود فایل افزونه</span>
+    </a>
+    <a class="btn-ghost" href="https://github.com/sbc-apps/sbc-extension/releases/latest" target="_blank" rel="noopener noreferrer" data-i18n="allReleases">همه‌ی نسخه‌ها</a>
+  </div>
+</dialog>
+
+<dialog class="modal" id="privacy-modal" aria-labelledby="privacy-title">
+  <button class="modal-close" type="button" data-close data-i18n-aria="close" aria-label="بستن"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  <div class="modal-text">
+    <h2 id="privacy-title" data-i18n="privacy">حریم خصوصی</h2>
+  </div>
+  <ul class="privacy-list" id="privacy-list"></ul>
+</dialog>
+
+<script type="module" src="site/landing.js"></script>
 </body>
 </html>

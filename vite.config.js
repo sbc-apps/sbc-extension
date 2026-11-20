@@ -4,5 +4,6 @@ import { resolve } from 'node:path';
 export default defineConfig({
   plugins: [react()],
   base: './',
-  build: { rollupOptions: { input: { newtab: resolve(import.meta.dirname, 'newtab.html'), landing: resolve(import.meta.dirname, 'landing.html') } } }
+  // Only the extension's new tab is bundled. The landing page (index.html + site/) is static and needs no build.
+  build: { rollupOptions: { input: { newtab: resolve(import.meta.dirname, 'newtab.html') } } }
 });
