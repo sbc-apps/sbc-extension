@@ -1,0 +1,63 @@
+name: Build and release SBC Start
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'package.json'
+      - 'manifest.json'
+      - 'src/**'
+      - 'index.html'
+      - 'landing.html'
+      - 'vite.config.js'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify version and decide whether to release
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION=$(node -p "require('./package.json').version")
+          MANIFEST_VERSION=$(node -p "require('./manifest.json').version")
+          test "$VERSION" = "$MANIFEST_VERSION" || { echo 'package.json and manifest.json versions must match'; exit 1; }
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          PREVIOUS=$(git show HEAD^:package.json 2>/dev/null | node -e "let s='';process.stdin.on('data',v=>s+=v).on('end',()=>{try{process.stdout.write(JSON.parse(s).version)}catch{}})" || true)
+          if [ "$VERSION" != "$PREVIOUS" ]; then echo 'changed=true' >> "$GITHUB_OUTPUT"; else echo 'changed=false' >> "$GITHUB_OUTPUT"; fi
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build extension and landing
+        run: npm run build
+      - name: Copy extension manifest
+        run: cp manifest.json dist/manifest.json
+      - name: Package Chromium and Firefox
+        run: |
+          cd dist
+          zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-chromium.zip" . -x "landing.html"
+          zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-firefox.zip" . -x "landing.html"
+      - name: Publish GitHub Release (only when version changes)
+        if: steps.version.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo "Release v$VERSION already exists"; exit 0
+          fi
+          gh release create "v$VERSION" "sbc-start-v$VERSION-chromium.zip" "sbc-start-v$VERSION-firefox.zip" --title "SBC Start v$VERSION" --generate-notes --latest
+      - name: Upload build artifact for non-version changes
+        if: steps.version.outputs.changed != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbc-start-preview
+          path: dist/

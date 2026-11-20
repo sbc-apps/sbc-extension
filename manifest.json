@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "SBC Start — Your New Tab",
+  "version": "1.0.0",
+  "description": "A customizable new tab dashboard with tasks, shortcuts, market data, weather, calendars and focus timer.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.coingecko.com/*",
+    "https://api.open-meteo.com/*"
+  ],
+  "action": {
+    "default_title": "SBC Start"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "start@sbc.om",
+      "strict_min_version": "109.0"
+    }
+  }
+}
