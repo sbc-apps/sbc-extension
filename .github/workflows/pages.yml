@@ -17,10 +17,10 @@ concurrency:
   group: github-pages
   cancel-in-progress: true
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # Upload and deploy run as separate jobs (GitHub's starter layout). In one job the deploy step
+  # can query for the artifact before GitHub has registered it and fail with
+  # "No artifacts named github-pages were found"; the job boundary removes that race.
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,6 +43,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
