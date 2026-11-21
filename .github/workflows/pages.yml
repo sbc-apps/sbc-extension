@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'privacy.html'
       - 'site/**'
       - 'src/assets/**'
       - 'src/brand-icons.js'
@@ -32,6 +33,7 @@ jobs:
           set -euo pipefail
           mkdir -p pages/src/assets/wallpapers
           cp index.html pages/index.html
+          cp privacy.html pages/privacy.html
           cp -R site pages/site
           cp src/brand-icons.js pages/src/brand-icons.js
           cp src/assets/sbc-logo.svg pages/src/assets/sbc-logo.svg

@@ -113,6 +113,8 @@ html[lang='fa'] .steps li::before { content: counter(step, persian); }
 .btn-ghost:hover { background: #f8fafc; }
 .privacy-list { max-width: 560px; margin: 18px auto 0; padding: 0; list-style: none; display: grid; gap: 12px; }
 .privacy-list li { position: relative; padding-inline-start: 26px; font-size: 15px; line-height: 1.85; color: #1e293b; text-align: start; }
+.privacy-more { margin: 20px 0 0; text-align: center; font-size: 15px; }
+.privacy-more a { color: var(--royal); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .privacy-list li::before { content: ''; position: absolute; inset-inline-start: 4px; top: .75em; width: 8px; height: 8px; border-radius: 50%; background: var(--royal); }
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }

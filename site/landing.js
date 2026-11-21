@@ -31,7 +31,7 @@ const T = {
     f: { weather: 'آب و هوا', news: 'اخبار روز', calendar: 'تقویم', tasks: 'کارهای من', prices: 'لیست قیمت', timer: 'تایمر', clock: 'ساعت', converter: 'مبدل قیمت' },
     company: 'SBC · Senior Block Chain',
     about: 'درباره ما', contact: 'تماس با ما', privacy: 'حریم خصوصی', github: 'گیت‌هاب', close: 'بستن',
-    downloadZip: 'دانلود فایل افزونه', allReleases: 'همه‌ی نسخه‌ها', toggle: 'English',
+    downloadZip: 'دانلود فایل افزونه', allReleases: 'همه‌ی نسخه‌ها', toggle: 'English', privacyFull: 'متن کامل سیاست حریم خصوصی',
     features: {
       weather: ['آب و هوا', 'دمای لحظه‌ای، رطوبت، باد و پیش‌بینی پنج روز آینده‌ی شهرت را در یک نگاه ببین. شهرت را هم خودت انتخاب کن.'],
       news: ['اخبار روز', 'تازه‌ترین اخبار، محصولات و پروژه‌های SBC همیشه یک کلیک با تو فاصله دارند؛ بدون باز کردن ده‌ها تب.'],
@@ -75,7 +75,7 @@ const T = {
     f: { weather: 'Weather', news: 'News', calendar: 'Calendar', tasks: 'My tasks', prices: 'Prices', timer: 'Timer', clock: 'Clock', converter: 'Converter' },
     company: 'SBC · Senior Block Chain',
     about: 'About', contact: 'Contact', privacy: 'Privacy', github: 'GitHub', close: 'Close',
-    downloadZip: 'Download the extension', allReleases: 'All releases', toggle: 'فارسی',
+    downloadZip: 'Download the extension', allReleases: 'All releases', toggle: 'فارسی', privacyFull: 'Read the full privacy policy',
     features: {
       weather: ['Weather', 'Live temperature, humidity, wind and a five-day forecast for the city you choose, at a glance.'],
       news: ['Daily news', 'The latest SBC company news, product updates and project stories are always one click away.'],

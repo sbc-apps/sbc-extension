@@ -59,7 +59,7 @@ The extension is not in the browser stores yet. The landing page walks visitors 
 
 The landing page is served as-is from the repository, so it looks the same whether Pages uses branch publishing or the `pages.yml` workflow (which copies `index.html`, `site/` and the few assets it uses). `.nojekyll` keeps branch publishing from processing files.
 
-https://sbc-apps.github.io/sbc-extension/
+https://extension.sbc.om/
 
 ## Privacy and permissions
 

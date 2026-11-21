@@ -42,14 +42,18 @@ jobs:
         run: npm run build
       - name: Verify extension new-tab output
         run: test -s dist/newtab.html
-      - name: Copy extension manifest
-        run: cp manifest.json dist/manifest.json
+      - name: Prepare Chromium and Firefox packages
+        run: |
+          set -euo pipefail
+          cp -R dist pkg-chromium
+          cp -R dist pkg-firefox
+          cp manifest.json pkg-firefox/manifest.json
+          # The Chrome Web Store flags Firefox-only manifest keys, so the Chromium package omits them.
+          node -e "const fs=require('fs');const m=JSON.parse(fs.readFileSync('manifest.json','utf8'));delete m.browser_specific_settings;fs.writeFileSync('pkg-chromium/manifest.json',JSON.stringify(m,null,2)+'\\n')"
       - name: Package Chromium and Firefox
         run: |
-          cd dist
-          zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-chromium.zip" .
-          zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-firefox.zip" .
-          cd ..
+          (cd pkg-chromium && zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-chromium.zip" .)
+          (cd pkg-firefox && zip -qr "../sbc-start-v${{ steps.version.outputs.version }}-firefox.zip" .)
           # Stable names so the landing page can link to releases/latest/download/<name>.
           cp "sbc-start-v${{ steps.version.outputs.version }}-chromium.zip" sbc-start-chromium.zip
           cp "sbc-start-v${{ steps.version.outputs.version }}-firefox.zip" sbc-start-firefox.zip
@@ -68,4 +72,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sbc-start-preview
-          path: dist/
+          path: pkg-chromium/

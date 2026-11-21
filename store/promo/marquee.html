@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SBC Start marquee 1400x560</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap">
+<style>
+html, body { margin: 0; width: 1400px; height: 560px; overflow: hidden; background: #0c0619; }
+.tile { position: relative; width: 1400px; height: 560px; display: grid; grid-template-columns: 520px 1fr; align-items: center; color: #fff; font-family: Inter, system-ui, sans-serif;
+  background: linear-gradient(90deg, rgba(8, 4, 20, .7), rgba(8, 4, 20, .15) 55%), url('../../src/assets/wallpapers/aurora.svg') center / cover; overflow: hidden; }
+.copy { padding-left: 84px; }
+.brand { display: flex; align-items: center; gap: 16px; }
+.brand img { width: 64px; height: 64px; filter: drop-shadow(0 8px 24px rgba(0, 152, 234, .5)); }
+h1 { margin: 0; font-size: 52px; font-weight: 800; letter-spacing: -.03em; }
+p { margin: 22px 0 0; font-size: 24px; line-height: 1.45; font-weight: 500; color: rgba(255, 255, 255, .9); max-width: 400px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; max-width: 420px; }
+.chips span { padding: 7px 14px; border-radius: 999px; font-size: 15px; font-weight: 600; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .25); }
+.shot { position: relative; justify-self: start; width: 860px; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 90px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .18); transform: perspective(1600px) rotateY(-8deg) rotateX(2deg); transform-origin: left center; }
+.shot img { display: block; width: 100%; }
+</style>
+</head>
+<body>
+<div class="tile">
+  <div class="copy">
+    <div class="brand"><img src="../../src/assets/sbc-logo.svg" alt=""><h1>SBC Start</h1></div>
+    <p>Crypto prices, SBC news, weather, tasks and focus in every new tab.</p>
+    <div class="chips"><span>Price alerts</span><span>Converter</span><span>Jalali calendar</span><span>Notes</span><span>Your IP</span></div>
+  </div>
+  <div class="shot"><img src="../screenshots/2-markets.png" alt=""></div>
+</div>
+</body>
+</html>
