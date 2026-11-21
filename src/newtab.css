@@ -1,4 +1,4 @@
-/* SBC Start — new tab. Layout mirrors automatically between RTL (fa) and LTR (en) via logical properties. */
+/* SBC Start new tab. Layout mirrors automatically between RTL (fa) and LTR (en) via logical properties. */
 :root { color-scheme: dark; }
 html, body, #root { height: 100%; margin: 0; background: #07040f; }
 *, *::before, *::after { box-sizing: border-box; }

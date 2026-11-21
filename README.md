@@ -1,12 +1,12 @@
 # SBC Start
 
-A browser **New Tab** extension and its landing page, built for Senior Block Chain LLC (SBC). Persian (right-to-left) is the default language; English is one click away in Settings.
+A browser **New Tab** extension and its landing page, built for Senior Block Chain LLC (SBC). English is the default language; Persian (right-to-left, with the Jalali calendar) is one click away in Settings and on the landing page.
 
 ## The new tab
 
 - Big clock with two switchable cities, the date in the Solar Hijri (Jalali) calendar, and a web search bar (Google, DuckDuckGo or Bing) with a shortcuts button.
-- **Top bar:** tools launcher · SBC news · weather — focus timer — live crypto ticker · price alerts · converter.
-- **Bottom bar:** my tasks · notes — wallpaper back / slideshow / next — your public IP and connection status · settings.
+- **Top bar:** tools launcher, SBC news and weather on one side; the focus timer in the middle; the live crypto ticker, price alerts and converter on the other side.
+- **Bottom bar:** my tasks and notes; wallpaper back, slideshow and next in the middle; your public IP, connection status and settings.
 - Every item opens a frosted-glass popover: 5-day weather with city search, SBC news (one line per headline), a calendar showing Jalali, Gregorian and Hijri dates, 8-coin market list (click a coin to pin it to the ticker), price alerts, crypto/fiat converter, Pomodoro focus timer (other widgets fade while it runs), prioritised tasks, notes, world clock, shortcuts and settings.
 - Five bundled wallpapers that work offline: four original "silk ribbon" artworks (`npm run wallpapers` regenerates them) and the official SBC meadow illustration.
 - Settings are saved in `localStorage` and stay in sync across open tabs.
@@ -30,16 +30,16 @@ To try the extension locally, run `npm run build`, copy `manifest.json` into `di
 
 ## Project layout
 
-- `src/main.jsx` — new tab shell: bars, clock, search, popovers, focus/alert/slideshow logic
-- `src/panels.jsx` — every widget panel (weather, news, markets, alerts, converter, focus, tasks, notes, calendar, world clock, shortcuts, IP, settings)
-- `src/api.js` — public data sources with a shared localStorage cache
-- `src/store.js` — settings schema, migration from v1, cross-tab sync
-- `src/i18n.js`, `src/dates.js` — Persian/English strings and Intl-based calendar helpers
-- `src/wallpapers.js`, `src/assets/` — wallpapers and the SBC logo
-- `src/brand-icons.js` — browser and search engine glyphs (Simple Icons, CC0), also used by the landing page
-- `public/icons/` — extension icons
-- `index.html`, `site/` — static landing page
-- `.github/workflows/release.yml`, `.github/workflows/pages.yml` — release and Pages deployment
+- `src/main.jsx`: new tab shell (bars, clock, search, popovers, focus, alert and slideshow logic)
+- `src/panels.jsx`: every widget panel (weather, news, markets, alerts, converter, focus, tasks, notes, calendar, world clock, shortcuts, IP, settings)
+- `src/api.js`: public data sources with a shared localStorage cache
+- `src/store.js`: settings schema, migration from v1, cross-tab sync
+- `src/i18n.js`, `src/dates.js`: Persian/English strings and Intl-based calendar helpers
+- `src/wallpapers.js`, `src/assets/`: wallpapers and the SBC logo
+- `src/brand-icons.js`: browser and search engine glyphs (Simple Icons, CC0), also used by the landing page
+- `public/icons/`: extension icons
+- `index.html`, `site/`: static landing page
+- `.github/workflows/release.yml`, `.github/workflows/pages.yml`: release and Pages deployment
 
 ## Install
 

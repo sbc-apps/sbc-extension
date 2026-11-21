@@ -20,7 +20,7 @@ function defaultClocks() {
 }
 
 export const defaults = {
-  lang: 'fa',
+  lang: 'en',
   search: 'google',
   unit: 'celsius',
   city: { name: 'Muscat', lat: 23.588, lon: 58.383 },

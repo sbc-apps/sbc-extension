@@ -300,7 +300,7 @@ export function ConverterPanel() {
   const rate = usdPer(from) / usdPer(to);
   const value = a * rate;
   const fmt = (v, unit) => {
-    if (!Number.isFinite(v)) return '—';
+    if (!Number.isFinite(v)) return '···';
     const max = isCoin(unit) ? (v < 1 ? 8 : 6) : unit === 'OMR' ? 3 : 2;
     return v.toLocaleString('en-US', { maximumFractionDigits: max });
   };

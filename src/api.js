@@ -135,7 +135,7 @@ export function useRemote(source, { poll = 0, enabled = true } = {}) {
 
 // Formatting helpers for prices (always Latin digits, like most exchanges show them).
 export function usd(v) {
-  if (v == null || !Number.isFinite(v)) return '—';
+  if (v == null || !Number.isFinite(v)) return '···';
   const digits = v >= 1000 ? 0 : v >= 1 ? 2 : 4;
   return '$' + v.toLocaleString('en-US', { maximumFractionDigits: digits, minimumFractionDigits: digits === 0 ? 0 : Math.min(2, digits) });
 }

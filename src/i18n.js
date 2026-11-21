@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-// UI strings. Persian (fa) is the default and is right-to-left; English (en) is left-to-right.
+// UI strings. English (en, left-to-right) is the default; Persian (fa) is right-to-left.
 const fa = {
   news: 'اخبار', weather: 'آب و هوا', focus: 'تمرکز', priceAlert: 'هشدار قیمت', converter: 'مبدل قیمت',
   markets: 'لیست قیمت', myTasks: 'کارهای من', notes: 'یادداشت‌ها', yourIp: 'آی‌پی شما', online: 'متصل', offline: 'آفلاین',
@@ -47,9 +47,9 @@ const en = {
   marketsError: 'Prices are unavailable right now.', pinHint: 'Click a coin to show it in the top bar.', marketsSource: 'Source: CoinGecko · informational only',
   alertsHint: 'Alerts are checked every minute while an SBC Start tab is open.', above: 'Above', below: 'Below',
   noAlerts: 'No alerts yet.', triggered: 'Triggered', pricePlaceholder: 'Price in USD', alertToast: '{coin} reached {price}',
-  amount: 'Amount', swap: 'Swap', converterSource: 'Indicative rates — not for trading.',
+  amount: 'Amount', swap: 'Swap', converterSource: 'Indicative rates, not for trading.',
   focusIdle: 'Pick a length and start.', start: 'Start', pause: 'Pause', resume: 'Resume', reset: 'Reset', minutes: 'min',
-  focusDone: 'Focus session complete — take a short break!', focusHint: 'Other widgets fade out until the session ends.', focusRunning: 'Focusing',
+  focusDone: 'Focus session complete. Take a short break!', focusHint: 'Other widgets fade out until the session ends.', focusRunning: 'Focusing',
   addTask: 'New task…', noTasks: 'Nothing on your list.', clearDone: 'Clear completed', tasksLeft: '{n} left',
   priority: { high: 'High priority', mid: 'Medium priority', low: 'Low priority' },
   notesPlaceholder: 'Jot something down…', notesSaved: 'Saved automatically',
@@ -84,7 +84,7 @@ export function cityName(tz, lang) {
 }
 
 export function makeI18n(lang) {
-  const dict = STRINGS[lang] || fa;
+  const dict = STRINGS[lang] || en;
   const t = (key, vars) => {
     let s = key.split('.').reduce((o, k) => (o == null ? o : o[k]), dict);
     if (s == null) s = key;
@@ -98,5 +98,5 @@ export function makeI18n(lang) {
   };
 }
 
-export const I18nContext = createContext(makeI18n('fa'));
+export const I18nContext = createContext(makeI18n('en'));
 export const useI18n = () => useContext(I18nContext);

@@ -21,7 +21,7 @@ const BROWSERS = {
 
 const T = {
   fa: {
-    pageTitle: 'افزونه SBC Start — همه‌چیز در یک تب جدید',
+    pageTitle: 'افزونه SBC Start: همه‌چیز در یک تب جدید',
     title: 'افزونه SBC Start',
     words: ['قیمت ارزها', 'اخبار روز', 'کارهای خود', 'آب و هوا', 'تقویم شمسی'],
     wordsSr: 'قیمت ارزها، اخبار روز، کارهای خود و آب و هوا',
@@ -64,7 +64,7 @@ const T = {
     ],
   },
   en: {
-    pageTitle: 'SBC Start — everything in a new tab',
+    pageTitle: 'SBC Start: everything in a new tab',
     title: 'SBC Start',
     words: ['crypto prices', "today's news", 'your tasks', 'the weather', 'your calendar'],
     wordsSr: "crypto prices, today's news, your tasks and the weather",
@@ -77,7 +77,7 @@ const T = {
     about: 'About', contact: 'Contact', privacy: 'Privacy', github: 'GitHub', close: 'Close',
     downloadZip: 'Download the extension', allReleases: 'All releases', toggle: 'فارسی',
     features: {
-      weather: ['Weather', 'Live temperature, humidity, wind and a five-day forecast for the city you choose — at a glance.'],
+      weather: ['Weather', 'Live temperature, humidity, wind and a five-day forecast for the city you choose, at a glance.'],
       news: ['Daily news', 'The latest SBC company news, product updates and project stories are always one click away.'],
       calendar: ['Calendar', 'Solar Hijri, Gregorian and Hijri dates side by side, with a monthly calendar to plan your days.'],
       tasks: ['My tasks', 'Keep your day on track with a simple to-do list and priorities, so nothing slips through the cracks.'],
@@ -110,7 +110,7 @@ const T = {
 };
 
 const $ = sel => document.querySelector(sel);
-let lang = 'fa';
+let lang = 'en';
 
 function glyph(name) {
   const b = BRAND[name];
@@ -151,7 +151,7 @@ function buildWords() {
 
 /* ---------------------------------------------------------------- language */
 function applyLang(next) {
-  lang = T[next] ? next : 'fa';
+  lang = T[next] ? next : 'en';
   try { localStorage.setItem(LANG_KEY, lang); } catch { /* storage blocked */ }
   const html = document.documentElement;
   html.lang = lang;
@@ -223,4 +223,4 @@ $('#lang-toggle').addEventListener('click', () => applyLang(lang === 'fa' ? 'en'
 
 let initial = new URLSearchParams(location.search).get('lang');
 if (!initial) { try { initial = localStorage.getItem(LANG_KEY); } catch { /* storage blocked */ } }
-applyLang(initial || 'fa');
+applyLang(initial || 'en');

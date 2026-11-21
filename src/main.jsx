@@ -85,7 +85,7 @@ function Ticker({ markets }) {
   const coin = markets.data?.find(x => x.id === config.ticker) || markets.data?.[0];
   if (!coin) {
     const sym = COINS.find(c => c.id === config.ticker)?.sym || 'BTC';
-    return <span className="ticker" dir="ltr"><span className="coin-ph" /><b>{sym}</b><span className="muted">{markets.error ? '—' : '···'}</span></span>;
+    return <span className="ticker" dir="ltr"><span className="coin-ph" /><b>{sym}</b><span className="muted">···</span></span>;
   }
   return (
     <span className="ticker" dir="ltr">
@@ -220,7 +220,7 @@ function IpChip({ ip }) {
   return (
     <>
       <span className="flag" aria-hidden="true">{d ? flagEmoji(d.country) : '🌐'}</span>
-      <span className="ip-num" dir="ltr">{d ? d.ip : ip.error ? '—' : '···'}</span>
+      <span className="ip-num" dir="ltr">{d ? d.ip : '···'}</span>
       <span className={`ip-state ${online ? 'on' : 'off'}`}>{online ? t('online') : t('offline')}</span>
     </>
   );
