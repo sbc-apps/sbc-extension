@@ -4,18 +4,19 @@ import { AnimateUIProvider } from '@animate-ui/react/provider';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Grip, Newspaper, LocateFixed, Bell, ArrowLeftRight, ClipboardList, NotebookPen, Settings, Bookmark,
-  ChevronDown, ChevronLeft, ChevronRight, Play, Pause, X, CloudSun, BellRing, Check,
+  ChevronDown, ChevronLeft, ChevronRight, Play, Pause, X, CloudSun, BellRing, Search,
 } from 'lucide-react';
 import '@fontsource-variable/vazirmatn';
 import '@fontsource-variable/inter';
 import './newtab.css';
 import { makeI18n, I18nContext, useI18n, cityName } from './i18n';
-import { useConfig, searchEngines } from './store';
+import { useConfig } from './store';
+import { submitSearch } from './search';
 import { COINS, sources, useRemote, usd, pct } from './api';
 import { clockTime, fullDate } from './dates';
 import { wallpaperById, stepWallpaper } from './wallpapers';
 import {
-  ConfigContext, useCfg, useNow, useOnline, useMarkets, coinSym, useWeather, wxInfo, focusState, mmss, flagEmoji, BrandGlyph,
+  ConfigContext, useCfg, useNow, useOnline, useMarkets, coinSym, useWeather, wxInfo, focusState, mmss, flagEmoji,
   TOOLS, ToolsLauncher, WeatherPanel, NewsPanel, MarketsPanel, AlertsPanel, ConverterPanel, FocusPanel, TasksPanel,
   NotesPanel, CalendarPanel, ShortcutsPanel, IpPanel, SettingsPanel,
 } from './panels';
@@ -151,34 +152,20 @@ function TopBar({ markets, openTool }) {
 /* ---------------------------------------------------------------- Centre: clock, date, search */
 
 function SearchRow() {
-  const { config, update } = useCfg();
-  const { setOpen } = useContext(PopContext);
   const { t } = useI18n();
   const [q, setQ] = useState('');
-  const submit = e => {
+  const [failed, setFailed] = useState(false);
+  const submit = async e => {
     e.preventDefault();
-    const raw = q.trim();
-    if (!raw) return;
-    let url;
-    if (/^https?:\/\/\S+$/i.test(raw)) url = raw;
-    else if (/^[\w-]+(\.[\w-]+)+(:\d+)?([/?#]\S*)?$/.test(raw)) url = `https://${raw}`;
-    else url = searchEngines[config.search] + encodeURIComponent(raw);
-    window.location.assign(url);
+    setFailed(false);
+    try { await submitSearch(q); } catch { setFailed(true); }
   };
-  const engine = t(`engines.${config.search}`);
   return (
     <div className="search-row">
       <form className="search" onSubmit={submit} role="search">
-        <Pop id="engine" width={210} btnClass="engine-btn" ariaLabel={t('searchEngine')} label={<BrandGlyph name={config.search} size={22} color="#fff" />}>
-          <div className="menu">
-            {['google', 'duckduckgo', 'bing'].map(k => (
-              <button type="button" key={k} className={config.search === k ? 'on' : ''} onClick={() => { update({ search: k }); setOpen(null); }}>
-                <BrandGlyph name={k} size={16} color="currentColor" /><span>{t(`engines.${k}`)}</span>{config.search === k && <Check size={15} />}
-              </button>
-            ))}
-          </div>
-        </Pop>
-        <input value={q} onChange={e => setQ(e.target.value)} placeholder={t('searchPlaceholder', { engine })} aria-label={t('searchPlaceholder', { engine })} autoFocus autoComplete="off" spellCheck="false" />
+        <button type="submit" className="bar-btn engine-btn" aria-label={t('searchButton')}><Search size={22} aria-hidden="true" /></button>
+        <input value={q} onChange={e => { setQ(e.target.value); setFailed(false); }} placeholder={t('searchPlaceholder')} aria-label={t('searchPlaceholder')} autoFocus autoComplete="off" spellCheck="false" />
+        {failed && <span className="search-error" role="status">{t('searchUnavailable')}</span>}
       </form>
       <Pop id="shortcuts" align="end" width={372} title={t('shortcuts')} ariaLabel={t('shortcuts')} btnClass="square" label={<Bookmark size={20} />}><ShortcutsPanel /></Pop>
     </div>

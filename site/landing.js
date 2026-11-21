@@ -1,7 +1,7 @@
 // SBC Start landing page behaviour. Plain ES module, no build step (served as-is by GitHub Pages).
 import { BRAND } from '../src/brand-icons.js';
 
-export const VERSION = '1.5.1'; // keep in sync with package.json / manifest.json (checked in CI)
+export const VERSION = '1.5.2'; // keep in sync with package.json / manifest.json (checked in CI)
 const REPO = 'https://github.com/sbc-apps/sbc-extension';
 const ZIP = {
   chromium: `${REPO}/releases/latest/download/sbc-start-chromium.zip`,

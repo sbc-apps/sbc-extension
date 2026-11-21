@@ -4,7 +4,7 @@ Everything needed to fill in the Chrome Web Store Developer Dashboard, field by 
 
 ## 1. Package to upload
 
-`sbc-start-v1.5.1-chromium.zip` from the v1.5.1 GitHub release (created automatically after the version bump is pushed to `main`). It is the Chromium build: the manifest has no Firefox-only keys and asks only for the `storage` permission.
+`sbc-start-v1.5.2-chromium.zip` from the v1.5.2 GitHub release (created automatically after the version bump is pushed to `main`). It is the Chromium build: the manifest has no Firefox-only keys and requests `storage` and `search`.
 
 ## 2. Store listing tab
 
@@ -29,7 +29,7 @@ SBC Start turns every new tab into a calm, useful dashboard.
 
 WHAT YOU GET
 • A big clock with two cities you can switch between, and today's date
-• Search with Google, DuckDuckGo or Bing, or type a web address
+• Search with your browser’s default search provider, or type a web address
 • A live crypto ticker in the top bar, with a full list of top coins and their 24-hour change
 • Price alerts that tell you when a coin goes above or below your target (checked while SBC Start is open)
 • A converter between crypto and currencies such as USD, EUR, GBP, AED and OMR
@@ -45,7 +45,7 @@ WHAT YOU GET
 PRIVATE BY DESIGN
 • No account, no ads, no analytics, no tracking
 • Your tasks, notes and settings stay in your browser
-• Only one permission: storage
+• Only two permissions: storage and browser search
 
 Live data comes from public services (CoinGecko, Open-Meteo, ExchangeRate-API, country.is and sbc.om). Prices are for information only and are not financial advice.
 
@@ -66,6 +66,7 @@ SBC Start replaces the browser's new tab page with a personal dashboard: clock, 
 | Permission | Justification |
 | --- | --- |
 | storage | Saves the user's tasks, notes, shortcuts, price alerts and settings locally in the browser so they persist between new tabs. |
+| search | Uses the browser’s configured default search provider for queries typed into the new-tab search box. |
 
 There are no host permissions to justify.
 

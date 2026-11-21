@@ -597,11 +597,6 @@ export function SettingsPanel() {
         </div>
       </section>
       <section>
-        <h4>{t('searchEngine')}</h4>
-        <Segmented value={config.search} onChange={v => update({ search: v })} label={t('searchEngine')}
-          options={['google', 'duckduckgo', 'bing'].map(k => ({ value: k, label: t(`engines.${k}`), icon: <BrandGlyph name={k} size={14} color="currentColor" /> }))} />
-      </section>
-      <section>
         <h4>{t('tempUnit')}</h4>
         <Segmented value={config.unit} onChange={v => update({ unit: v })} options={[{ value: 'celsius', label: `${t('celsius')} ⁦°C⁩` }, { value: 'fahrenheit', label: `${t('fahrenheit')} ⁦°F⁩` }]} label={t('tempUnit')} />
       </section>

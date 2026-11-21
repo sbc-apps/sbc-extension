@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "SBC Start: Your New Tab",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A new tab with crypto prices, price alerts, converter, SBC news, weather, Jalali calendar, tasks, notes and a focus timer.",
   "icons": {
     "16": "icons/icon-16.png",
@@ -13,7 +13,8 @@
     "newtab": "newtab.html"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "search"
   ],
   "action": {
     "default_title": "SBC Start",

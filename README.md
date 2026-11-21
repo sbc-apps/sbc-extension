@@ -4,7 +4,7 @@ A browser **New Tab** extension and its landing page, built for Senior Block Cha
 
 ## The new tab
 
-- Big clock with two switchable cities, the date in the Solar Hijri (Jalali) calendar, and a web search bar (Google, DuckDuckGo or Bing) with a shortcuts button.
+- Big clock with two switchable cities, the date in the Solar Hijri (Jalali) calendar, and a web search bar (uses your browser’s default search provider) with a shortcuts button.
 - **Top bar:** tools launcher, SBC news and weather on one side; the focus timer in the middle; the live crypto ticker, price alerts and converter on the other side.
 - **Bottom bar:** my tasks and notes; wallpaper back, slideshow and next in the middle; your public IP, connection status and settings.
 - Every item opens a frosted-glass popover: 5-day weather with city search, SBC news (one line per headline), a calendar showing Jalali, Gregorian and Hijri dates, 8-coin market list (click a coin to pin it to the ticker), price alerts, crypto/fiat converter, Pomodoro focus timer (other widgets fade while it runs), prioritised tasks, notes, world clock, shortcuts and settings.

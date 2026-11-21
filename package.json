@@ -1,13 +1,14 @@
 {
   "name": "sbc-extension",
   "private": true,
-  "version": "1.5.1",
+  "version": "1.5.2",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
-    "wallpapers": "node scripts/make-wallpapers.mjs"
+    "wallpapers": "node scripts/make-wallpapers.mjs",
+    "test": "node --test"
   },
   "dependencies": {
     "@animate-ui/react": "^2.0.0",

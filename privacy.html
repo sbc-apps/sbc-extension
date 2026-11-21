@@ -56,10 +56,10 @@ nav { font-size: 14px; margin-bottom: 28px; }
 <p>The extension does not send your tasks, notes, browsing history or any identifier to these services. Their responses are cached in your browser to reduce requests.</p>
 
 <h2>Search</h2>
-<p>When you search from the new tab, your query is sent to the search engine you selected (Google, DuckDuckGo or Bing), exactly as if you had typed it on that website.</p>
+<p>When you search from the new tab, the browser sends your query to its configured default search provider using the browser search API. An explicit web address opens directly.</p>
 
 <h2>Permissions</h2>
-<p>The extension asks only for <code>storage</code>, to save your content and settings in the browser. It overrides the new tab page and cannot read the content of websites you visit, your browsing history, wallets or private keys.</p>
+<p>The extension requests <code>storage</code> to save content and settings in the browser, and <code>search</code> to use the browser’s configured search provider. It overrides the new tab page and cannot read the content of websites you visit, your browsing history, wallets or private keys.</p>
 
 <h2>Children</h2>
 <p>SBC Start is not directed at children under 13.</p>
@@ -95,10 +95,10 @@ nav { font-size: 14px; margin-bottom: 28px; }
 <p>افزونه کارها، یادداشت‌ها، تاریخچه‌ی مرور یا هیچ شناسه‌ای را برای این سرویس‌ها نمی‌فرستد.</p>
 
 <h2>جستجو</h2>
-<p>وقتی از تب جدید جستجو می‌کنید، عبارت جستجو به موتور جستجوی انتخابی شما (گوگل، داک‌داک‌گو یا بینگ) فرستاده می‌شود؛ درست مثل جستجو در خود آن سایت.</p>
+<p>وقتی از تب جدید جستجو می‌کنید، مرورگر عبارت جستجو را از طریق رابط جستجوی مرورگر به موتور جستجوی پیش‌فرض تنظیم‌شده می‌فرستد. نشانی وب مستقیماً باز می‌شود.</p>
 
 <h2>مجوزها</h2>
-<p>افزونه فقط مجوز <code>storage</code> را برای ذخیره‌ی داده‌ها و تنظیمات در مرورگر می‌خواهد و به محتوای سایت‌ها، تاریخچه‌ی مرور، کیف پول یا کلیدهای خصوصی شما دسترسی ندارد.</p>
+<p>افزونه برای ذخیرهٔ داده‌ها و تنظیمات در مرورگر از مجوز <code>storage</code> و برای جستجو با موتور پیش‌فرض مرورگر از مجوز <code>search</code> استفاده می‌کند. افزونه به محتوای سایت‌ها، تاریخچهٔ مرور، کیف پول یا کلیدهای خصوصی شما دسترسی ندارد.</p>
 
 <h2>تماس</h2>
 <p>پرسش درباره‌ی این سیاست: <a href="https://sbc.om/contact/">sbc.om/contact</a></p>
