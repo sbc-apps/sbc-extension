@@ -4,12 +4,6 @@ import { useCallback, useEffect, useState } from 'react';
 const KEY = 'sbc-start-settings-v2';
 const LEGACY_KEY = 'sbc-start-settings-v1';
 
-export const searchEngines = {
-  google: 'https://www.google.com/search?q=',
-  duckduckgo: 'https://duckduckgo.com/?q=',
-  bing: 'https://www.bing.com/search?q=',
-};
-
 export const WIDGETS = ['ticker', 'alerts', 'converter', 'news', 'weather', 'focus', 'tasks', 'notes', 'ip', 'wallpaperControls'];
 
 // The main clock starts on the browser's own time zone, paired with Tehran (or Muscat for Tehran users).
@@ -21,7 +15,6 @@ function defaultClocks() {
 
 export const defaults = {
   lang: 'en',
-  search: 'google',
   unit: 'celsius',
   city: { name: 'Muscat', lat: 23.588, lon: 58.383 },
   clocks: defaultClocks(),
@@ -45,7 +38,6 @@ export const defaults = {
 
 function migrateLegacy(old) {
   const out = {};
-  if (old.search) out.search = old.search;
   if (old.unit) out.unit = old.unit;
   if (typeof old.lat === 'number' && typeof old.lon === 'number') out.city = { name: old.city || 'Muscat', lat: old.lat, lon: old.lon };
   if (Array.isArray(old.tasks)) out.tasks = old.tasks.map(t => ({ id: t.id, text: t.text, done: !!t.done, priority: 'mid' }));
@@ -60,6 +52,7 @@ export function load() {
       const legacy = JSON.parse(localStorage.getItem(LEGACY_KEY) || 'null');
       saved = legacy ? migrateLegacy(legacy) : {};
     }
+    delete saved.search; // Retire the preference without losing other saved settings.
     return {
       ...defaults,
       ...saved,

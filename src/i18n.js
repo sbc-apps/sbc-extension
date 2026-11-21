@@ -5,7 +5,7 @@ const fa = {
   news: 'اخبار', weather: 'آب و هوا', focus: 'تمرکز', priceAlert: 'هشدار قیمت', converter: 'مبدل قیمت',
   markets: 'لیست قیمت', myTasks: 'کارهای من', notes: 'یادداشت‌ها', yourIp: 'آی‌پی شما', online: 'متصل', offline: 'آفلاین',
   settings: 'تنظیمات', tools: 'ابزارها', calendar: 'تقویم', worldClock: 'ساعت جهانی', shortcuts: 'میان‌برها',
-  searchPlaceholder: 'جستجو در {engine} یا وارد کردن آدرس', searchEngine: 'موتور جستجو',
+  searchPlaceholder: 'جستجو یا وارد کردن آدرس', searchButton: 'جستجو', searchUnavailable: 'جستجوی مرورگر در دسترس نیست.',
   prevWallpaper: 'پس‌زمینه‌ی قبلی', nextWallpaper: 'پس‌زمینه‌ی بعدی', playWallpapers: 'نمایش خودکار پس‌زمینه‌ها', pauseWallpapers: 'توقف نمایش خودکار',
   close: 'بستن', loading: 'در حال دریافت…', retry: 'تلاش دوباره', add: 'افزودن', remove: 'حذف', save: 'ذخیره', cancel: 'انصراف',
   humidity: 'رطوبت', wind: 'باد', feelsLike: 'دمای محسوس', changeCity: 'تغییر شهر', searchCity: 'نام شهر را بنویسید…', noCity: 'شهری پیدا نشد.',
@@ -30,14 +30,13 @@ const fa = {
   privacyNote: 'همه‌ی داده‌ها فقط در همین مرورگر ذخیره می‌شوند.', version: 'نسخه', website: 'وب‌سایت SBC',
   wallpapers: { aurora: 'شفق', ocean: 'اقیانوس', emerald: 'زمرد', ember: 'اخگر', meadow: 'دشت' },
   widgetNames: { ticker: 'قیمت لحظه‌ای', alerts: 'هشدار قیمت', converter: 'مبدل قیمت', news: 'اخبار', weather: 'آب و هوا', focus: 'تمرکز', tasks: 'کارهای من', notes: 'یادداشت‌ها', ip: 'آی‌پی', wallpaperControls: 'کنترل پس‌زمینه' },
-  engines: { google: 'گوگل', duckduckgo: 'داک‌داک‌گو', bing: 'بینگ' },
 };
 
 const en = {
   news: 'News', weather: 'Weather', focus: 'Focus', priceAlert: 'Price alert', converter: 'Converter',
   markets: 'Markets', myTasks: 'My tasks', notes: 'Notes', yourIp: 'Your IP', online: 'Online', offline: 'Offline',
   settings: 'Settings', tools: 'Tools', calendar: 'Calendar', worldClock: 'World clock', shortcuts: 'Shortcuts',
-  searchPlaceholder: 'Search {engine} or type a URL', searchEngine: 'Search engine',
+  searchPlaceholder: 'Search or type a URL', searchButton: 'Search', searchUnavailable: 'Browser search is unavailable.',
   prevWallpaper: 'Previous wallpaper', nextWallpaper: 'Next wallpaper', playWallpapers: 'Play wallpaper slideshow', pauseWallpapers: 'Pause slideshow',
   close: 'Close', loading: 'Loading…', retry: 'Try again', add: 'Add', remove: 'Remove', save: 'Save', cancel: 'Cancel',
   humidity: 'Humidity', wind: 'Wind', feelsLike: 'Feels like', changeCity: 'Change city', searchCity: 'Search a city…', noCity: 'No matching city.',
@@ -62,7 +61,6 @@ const en = {
   privacyNote: 'Everything is stored only in this browser.', version: 'Version', website: 'SBC website',
   wallpapers: { aurora: 'Aurora', ocean: 'Ocean', emerald: 'Emerald', ember: 'Ember', meadow: 'Meadow' },
   widgetNames: { ticker: 'Price ticker', alerts: 'Price alerts', converter: 'Converter', news: 'News', weather: 'Weather', focus: 'Focus', tasks: 'My tasks', notes: 'Notes', ip: 'IP address', wallpaperControls: 'Wallpaper controls' },
-  engines: { google: 'Google', duckduckgo: 'DuckDuckGo', bing: 'Bing' },
 };
 
 export const STRINGS = { fa, en };

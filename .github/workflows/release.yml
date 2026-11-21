@@ -38,6 +38,8 @@ jobs:
           if [ "$VERSION" != "$PREVIOUS" ] || ! git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null 2>&1; then echo 'changed=true' >> "$GITHUB_OUTPUT"; else echo 'changed=false' >> "$GITHUB_OUTPUT"; fi
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Test search behavior
+        run: npm test
       - name: Build extension
         run: npm run build
       - name: Verify extension new-tab output

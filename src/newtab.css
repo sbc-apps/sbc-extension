@@ -383,3 +383,12 @@ select.full { width: 100%; }
   .wp-layer { animation: none; }
   * { transition-duration: .01ms !important; }
 }
+
+.search-error {
+  position: absolute;
+  inset-block-start: calc(100% + 8px);
+  inset-inline: 12px;
+  color: white;
+  text-align: center;
+  font-size: 13px;
+}
